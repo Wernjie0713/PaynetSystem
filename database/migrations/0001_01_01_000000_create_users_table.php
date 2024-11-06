@@ -13,10 +13,33 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('matric_no')->unique()->nullable();
             $table->string('password');
+            $table->string('duitnow_id')->unique()->nullable();
+            $table->string('faculty')->nullable();
+            $table->string('campus')->nullable();
+            $table->string('phone_no')->unique()->nullable();
+            $table->integer('total_count')->default(0);
+            $table->integer('oct_count')->default(0);
+            $table->integer('nov_count')->default(0);
+            $table->integer('dec_count')->default(0);
+            $table->integer('week1_count')->default(0);
+            $table->integer('week2_count')->default(0);
+            $table->integer('week3_count')->default(0);
+            $table->integer('week4_count')->default(0);
+            $table->integer('week5_count')->default(0);
+            $table->integer('week6_count')->default(0);
+            $table->integer('week7_count')->default(0);
+            $table->integer('week8_count')->default(0);
+            $table->integer('week9_count')->default(0);
+            $table->integer('week10_count')->default(0);
+            $table->integer('week11_count')->default(0);
+            $table->integer('week12_count')->default(0);
+            $table->integer('week13_count')->default(0);
+            $table->boolean('is_profile_complete')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

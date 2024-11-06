@@ -88,6 +88,18 @@ export default function Login({ status, canResetPassword }: { status?: string, c
                     </PrimaryButton>
                 </div>
             </form>
+
+            <hr className="mt-4 mb-4" />
+
+            <div className="flex flex-row justify-center">
+                <PrimaryButton>
+                    <a
+                        href={route('register')}
+                    >
+                        Sign up
+                    </a>
+                </PrimaryButton>
+            </div>
         </GuestLayout>
     );
 }

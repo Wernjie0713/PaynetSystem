@@ -5,9 +5,10 @@ import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
 
-export default function Authenticated({ header, children }: PropsWithChildren<{ header?: ReactNode }>) {
-    const user = usePage().props.auth.user;
-
+export default function Authenticated({ header, children, isAdmin }: PropsWithChildren<{ header?: ReactNode }>) {
+    const { auth } = usePage().props;
+    const user = auth.user;
+    
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
@@ -17,14 +18,24 @@ export default function Authenticated({ header, children }: PropsWithChildren<{ 
                     <div className="flex justify-between h-16">
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
-                                <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
+                                <Link href="/dashboard">
+                                    <ApplicationLogo className="block h-12 w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     Dashboard
+                                </NavLink>
+                                {!isAdmin  &&
+                                
+                                (<NavLink href={route('transactions.index')} active={route().current('transactions.index')}>
+                                    Transaction
+                                </NavLink>)
+                                }
+
+                                <NavLink href={route('contactus.index')} active={route().current('contactus.index')}>
+                                    Contact Us
                                 </NavLink>
                             </div>
                         </div>
@@ -57,7 +68,9 @@ export default function Authenticated({ header, children }: PropsWithChildren<{ 
                                     </Dropdown.Trigger>
 
                                     <Dropdown.Content>
-                                        <Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>
+                                        {!isAdmin  &&
+                                        (<Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>)}
+                                        
                                         <Dropdown.Link href={route('logout')} method="post" as="button">
                                             Log Out
                                         </Dropdown.Link>
@@ -97,6 +110,13 @@ export default function Authenticated({ header, children }: PropsWithChildren<{ 
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                             Dashboard
                         </ResponsiveNavLink>
+                        {!isAdmin
+                            &&
+                            (<ResponsiveNavLink href={route('transactions.index')} active={route().current('transactions.index')}>
+                                Transaction
+                            </ResponsiveNavLink>)
+                        }
+                        
                     </div>
 
                     <div className="pt-4 pb-1 border-t border-gray-200">
@@ -108,10 +128,12 @@ export default function Authenticated({ header, children }: PropsWithChildren<{ 
                         </div>
 
                         <div className="mt-3 space-y-1">
-                            <ResponsiveNavLink href={route('profile.edit')}>Profile</ResponsiveNavLink>
+                            {!isAdmin  &&
+                            (<ResponsiveNavLink href={route('profile.edit')}>Profile</ResponsiveNavLink>)}
                             <ResponsiveNavLink method="post" href={route('logout')} as="button">
                                 Log Out
                             </ResponsiveNavLink>
+                            <ResponsiveNavLink href={route('contactus.index')}>Profile</ResponsiveNavLink>
                         </div>
                     </div>
                 </div>
