@@ -112,6 +112,12 @@ export default function WeeklyLeaderboardTable({ users, current_user, isAdmin, s
                 setWeeklyTitle(title);
             }
         }
+        else{
+            const duration = 'September 1st, 2024 (12:00 a.m) - September 30th, 2024 (11:59 p.m)'; // Default fallback
+            const title = 'Week 0 Top 10'; // Default fallback
+            setWeeklyDuration(duration);
+            setWeeklyTitle(title);
+        }
     }, []);
 
     useEffect(() => {
