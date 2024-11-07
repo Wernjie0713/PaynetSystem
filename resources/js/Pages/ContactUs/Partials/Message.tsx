@@ -13,7 +13,8 @@ export default function Message({ message }) {
             <div className="flex-1">
                 <div className="flex justify-between items-center">
                     <div>
-                        <span className="text-gray-800">{message.user.name}</span>
+                        <span className="text-gray-800">{message.user.name} </span>
+                        <span className="text-gray-800">{message.user.phone_no}</span>
                         <small className="ml-2 text-sm text-gray-600">{dayjs(message.created_at).fromNow()}</small>
                     </div>
                 </div>
