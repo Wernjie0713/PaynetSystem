@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('campus')->nullable();
             $table->string('phone_no')->unique()->nullable();
             $table->integer('total_count')->default(0);
-            $table->integer('oct_count')->default(0);
             $table->integer('nov_count')->default(0);
             $table->integer('dec_count')->default(0);
             $table->integer('week1_count')->default(0);
@@ -34,11 +33,6 @@ return new class extends Migration
             $table->integer('week6_count')->default(0);
             $table->integer('week7_count')->default(0);
             $table->integer('week8_count')->default(0);
-            $table->integer('week9_count')->default(0);
-            $table->integer('week10_count')->default(0);
-            $table->integer('week11_count')->default(0);
-            $table->integer('week12_count')->default(0);
-            $table->integer('week13_count')->default(0);
             $table->boolean('is_profile_complete')->default(false);
             $table->rememberToken();
             $table->timestamps();

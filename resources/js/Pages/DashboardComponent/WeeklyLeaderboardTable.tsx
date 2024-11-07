@@ -44,8 +44,10 @@ export default function WeeklyLeaderboardTable({ users, current_user, isAdmin, s
     // Get the current month in JavaScript
     useEffect(() => {
         const currentDate = dayjs();
+        // const currentDate = dayjs('2024-11-12');
+
         // Event start and end dates
-        const eventStartDate = dayjs('2024-10-06'); // 6th October 2024
+        const eventStartDate = dayjs('2024-11-10'); // 10th November 2024
         const eventEndDate= dayjs('2024-12-31');  // 31st December 2024
 
         if (currentDate.isBetween(eventStartDate, eventEndDate, null, '[]')) {
@@ -55,37 +57,27 @@ export default function WeeklyLeaderboardTable({ users, current_user, isAdmin, s
             // Calculate week number (1-based)
             let weekNumber = Math.ceil((daysSinceEventStart + 1) / 7);
 
-            // Ensure the week number is valid (1-13)
-            if (weekNumber >= 1 && weekNumber <= 13) {
+            // Ensure the week number is valid (1-8)
+            if (weekNumber >= 1 && weekNumber <= 8) {
                 setWeeklyCount(`week${weekNumber}_count`);
 
                 const duration = (() => {
                     switch (weekNumber) {
                         case 1:
-                            return 'October 6th, 2024 (12:00 a.m) - October 12th, 2024 (11:59 p.m)';
-                        case 2:
-                            return 'October 13th, 2024 (12:00 a.m) - October 19th, 2024 (11:59 p.m)';
-                        case 3:
-                            return 'October 20th, 2024 (12:00 a.m) - October 26th, 2024 (11:59 p.m)';
-                        case 4:
-                            return 'October 27th, 2024 (12:00 a.m) - November 2nd, 2024 (11:59 p.m)';
-                        case 5:
-                            return 'November 3rd, 2024 (12:00 a.m) - November 9th, 2024 (11:59 p.m)';
-                        case 6:
                             return 'November 10th, 2024 (12:00 a.m) - November 16th, 2024 (11:59 p.m)';
-                        case 7:
+                        case 2:
                             return 'November 17th, 2024 (12:00 a.m) - November 23th, 2024 (11:59 p.m)';
-                        case 8:
+                        case 3:
                             return 'November 24th, 2024 (12:00 a.m) - November 30th, 2024 (11:59 p.m)';
-                        case 9:
+                        case 4:
                             return 'December 1st, 2024 (12:00 a.m) - December 7th, 2024 (11:59 p.m)';
-                        case 10:
+                        case 5:
                             return 'December 8th, 2024 (12:00 a.m) - December 14th, 2024 (11:59 p.m)';
-                        case 11:
+                        case 6:
                             return 'December 15th, 2024 (12:00 a.m) - December 21th, 2024 (11:59 p.m)';
-                        case 12:
+                        case 7:
                             return 'December 22th, 2024 (12:00 a.m) - December 28th, 2024 (11:59 p.m)';
-                        case 13:
+                        case 8:
                             return 'December 29th, 2024 (12:00 a.m) - December 31th, 2024 (11:59 p.m)';
                         default:
                             return 'September 1st, 2024 (12:00 a.m) - September 30th, 2024 (11:59 p.m)'; // Default fallback
@@ -110,16 +102,6 @@ export default function WeeklyLeaderboardTable({ users, current_user, isAdmin, s
                             return 'Week 7 Top 10';
                         case 8:
                             return 'Week 8 Top 10';
-                        case 9:
-                            return 'Week 9 Top 10';
-                        case 10:
-                            return 'Week 10 Top 10';
-                        case 11:
-                            return 'Week 11 Top 10';
-                        case 12:
-                            return 'Week 12 Top 10';
-                        case 13:
-                            return 'Week 13 Top 10';
                         default:
                             return 'Week 0 Top 10'; // Default fallback
                     }
@@ -141,30 +123,20 @@ export default function WeeklyLeaderboardTable({ users, current_user, isAdmin, s
                 const duration = (() => {
                     switch (selectedTime) {
                         case 1:
-                            return 'October 6th, 2024 (12:00 a.m) - October 12th, 2024 (11:59 p.m)';
-                        case 2:
-                            return 'October 13th, 2024 (12:00 a.m) - October 19th, 2024 (11:59 p.m)';
-                        case 3:
-                            return 'October 20th, 2024 (12:00 a.m) - October 26th, 2024 (11:59 p.m)';
-                        case 4:
-                            return 'October 27th, 2024 (12:00 a.m) - November 2nd, 2024 (11:59 p.m)';
-                        case 5:
-                            return 'November 3rd, 2024 (12:00 a.m) - November 9th, 2024 (11:59 p.m)';
-                        case 6:
                             return 'November 10th, 2024 (12:00 a.m) - November 16th, 2024 (11:59 p.m)';
-                        case 7:
+                        case 2:
                             return 'November 17th, 2024 (12:00 a.m) - November 23th, 2024 (11:59 p.m)';
-                        case 8:
+                        case 3:
                             return 'November 24th, 2024 (12:00 a.m) - November 30th, 2024 (11:59 p.m)';
-                        case 9:
+                        case 4:
                             return 'December 1st, 2024 (12:00 a.m) - December 7th, 2024 (11:59 p.m)';
-                        case 10:
+                        case 5:
                             return 'December 8th, 2024 (12:00 a.m) - December 14th, 2024 (11:59 p.m)';
-                        case 11:
+                        case 6:
                             return 'December 15th, 2024 (12:00 a.m) - December 21th, 2024 (11:59 p.m)';
-                        case 12:
+                        case 7:
                             return 'December 22th, 2024 (12:00 a.m) - December 28th, 2024 (11:59 p.m)';
-                        case 13:
+                        case 8:
                             return 'December 29th, 2024 (12:00 a.m) - December 31th, 2024 (11:59 p.m)';
                         default:
                             return 'September 1st, 2024 (12:00 a.m) - September 30th, 2024 (11:59 p.m)'; // Default fallback
@@ -189,16 +161,6 @@ export default function WeeklyLeaderboardTable({ users, current_user, isAdmin, s
                             return 'Week 7 Top 10';
                         case 8:
                             return 'Week 8 Top 10';
-                        case 9:
-                            return 'Week 9 Top 10';
-                        case 10:
-                            return 'Week 10 Top 10';
-                        case 11:
-                            return 'Week 11 Top 10';
-                        case 12:
-                            return 'Week 12 Top 10';
-                        case 13:
-                            return 'Week 13 Top 10';
                         default:
                             return 'Week 0 Top 10'; // Default fallback
                     }

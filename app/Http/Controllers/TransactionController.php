@@ -37,7 +37,8 @@ class TransactionController extends Controller
         // Validate the confirmed data
         $request->validate([
             'reference_id' => 'required|string|unique:transactions,reference_id|max:50',
-            'date' => 'required|date|after_or_equal:2024-10-06|before_or_equal:today',
+            // 'date' => 'required|date|after_or_equal:2024-11-10|before_or_equal:today',
+            'date' => 'required|date',
             'amount' => 'required|numeric|min:0.01|max:999999.99',
         ]);
 
@@ -196,7 +197,7 @@ class TransactionController extends Controller
         $user = $transaction->user;
         
         // Event start and end dates
-        $eventStartDate = Carbon::create(2024, 10, 6); // 6th October 2024
+        $eventStartDate = Carbon::create(2024, 11, 10); // 10th November 2024
         $eventEndDate = Carbon::create(2024, 12, 31);  // 31st December 2024
         
         // Parse transaction date
@@ -212,6 +213,7 @@ class TransactionController extends Controller
 
             // Get the current week number based on the mock date
             $currentWeekNumber = ceil(($eventStartDate->diffInDays(Carbon::now()) + 1) / 7);
+            // $currentWeekNumber = ceil(($eventStartDate->diffInDays(Carbon::create(2024, 11, 12)) + 1) / 7);
 
             // Check if the transaction week is before the current week
             if ($weekNumber < $currentWeekNumber) {
@@ -220,8 +222,8 @@ class TransactionController extends Controller
                 ]);
             }
             else{
-                // Ensure the week number is valid (1-13)
-                if ($weekNumber >= 1 && $weekNumber <= 13) {
+                // Ensure the week number is valid (1-8)
+                if ($weekNumber >= 1 && $weekNumber <= 8) {
                     $weekColumn = 'week' . $weekNumber . '_count'; // e.g., week1_count, week2_count, etc.
                     $user->{$weekColumn} += 1; // Increment the specific week's count
                 }
@@ -237,15 +239,12 @@ class TransactionController extends Controller
                 }
                 else{
                     // Update the total count for Oct, Nov, Dec
-                    if ($transactionMonth >= 10 && $transactionMonth <= 12) {
+                    if ($transactionMonth >= 11 && $transactionMonth <= 12) {
                         $user->total_count += 1;
                     }
     
                     // Update the specific month's count
                     switch ($transactionMonth) {
-                        case 10:
-                            $user->oct_count += 1;
-                            break;
                         case 11:
                             $user->nov_count += 1;
                             break;

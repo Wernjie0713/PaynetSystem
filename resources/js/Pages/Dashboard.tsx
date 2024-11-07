@@ -51,7 +51,7 @@ export default function Dashboard({ cumulative, monthly, weekly, facultyRanking,
                             <CumulativeLeaderboardTable 
                                 users={cumulative.data} 
                                 title="Cumulative Top 10" 
-                                duration="October 6th, 2024 (12:00 a.m) - December 31th, 2024 (11:59 p.m)" 
+                                duration="November 10th, 2024 (12:00 a.m) - December 31th, 2024 (11:59 p.m)" 
                                 current_user={current_user} 
                                 isAdmin={isAdmin} 
                                 links={cumulative.links} 

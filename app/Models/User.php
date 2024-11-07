@@ -29,7 +29,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'campus',
         'phone_no',
         'total_count',
-        'oct_count',
         'nov_count',
         'dec_count',
         'is_profile_complete',

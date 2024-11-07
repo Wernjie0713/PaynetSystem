@@ -45,8 +45,6 @@ export default function MonthlyLeaderboardTable({ users, current_user, isAdmin, 
         // Map the current month to the corresponding database column
         const column = (() => {
             switch (currentMonth) {
-                case 'Oct':
-                    return 'oct_count';
                 case 'Nov':
                     return 'nov_count';
                 case 'Dec':
@@ -59,8 +57,6 @@ export default function MonthlyLeaderboardTable({ users, current_user, isAdmin, 
 
         const duration = (() => {
             switch (currentMonth) {
-                case 'Oct':
-                    return 'October 6th, 2024 (12:00 a.m) - October 31th, 2024 (11:59 p.m)';
                 case 'Nov':
                     return 'November 1st, 2024 (12:00 a.m) - November 30th, 2024 (11:59 p.m)';
                 case 'Dec':
@@ -73,8 +69,6 @@ export default function MonthlyLeaderboardTable({ users, current_user, isAdmin, 
 
         const title = (() => {
             switch (currentMonth) {
-                case 'Oct':
-                    return 'October Top 10';
                 case 'Nov':
                     return 'November Top 10';
                 case 'Dec':
@@ -95,8 +89,6 @@ export default function MonthlyLeaderboardTable({ users, current_user, isAdmin, 
             // Ensure the week number is valid (1-13)
             const column = (() => {
                 switch (selectedTime) {
-                    case 10:
-                        return 'oct_count';
                     case 11:
                         return 'nov_count';
                     case 12:
@@ -109,8 +101,6 @@ export default function MonthlyLeaderboardTable({ users, current_user, isAdmin, 
     
             const duration = (() => {
                 switch (selectedTime) {
-                    case 10:
-                        return 'October 6th, 2024 (12:00 a.m) - October 31th, 2024 (11:59 p.m)';
                     case 11:
                         return 'November 1st, 2024 (12:00 a.m) - November 30th, 2024 (11:59 p.m)';
                     case 12:
@@ -123,8 +113,6 @@ export default function MonthlyLeaderboardTable({ users, current_user, isAdmin, 
     
             const title = (() => {
                 switch (selectedTime) {
-                    case 10:
-                        return 'October Top 10';
                     case 11:
                         return 'November Top 10';
                     case 12:
@@ -161,8 +149,6 @@ export default function MonthlyLeaderboardTable({ users, current_user, isAdmin, 
 
     const selectedMonth = (() => {
         switch (selectedTime) {
-            case 10:
-                return 'oct';
             case 11:
                 return 'nov';
             case 12:

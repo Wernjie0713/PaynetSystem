@@ -41,16 +41,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
         
         // Determine which column to order by based on the current month
         $monthlyOrderColumn = match($currentMonth) {
-            'Oct' => 'oct_count',
             'Nov' => 'nov_count',
             'Dec' => 'dec_count',
             default => 'total_count', // Fallback to total_count if it's not within Oct-Dec
         };
 
         // Event start and end dates
-        $eventStartDate = Carbon::create(2024, 10, 6); // 6th October 2024
+        $eventStartDate = Carbon::create(2024, 11, 10); // 10th November 2024
         $eventEndDate = Carbon::create(2024, 12, 31);  // 31st December 2024
         $currentDate = Carbon::now();
+        // $currentDate = Carbon::create(2024, 11, 12);
         if ($currentDate->between($eventStartDate, $eventEndDate)) {
             // Calculate the number of days since the start of the event
             $daysSinceEventStart = $eventStartDate->diffInDays($currentDate);
@@ -58,8 +58,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             // Calculate week number (1-based)
             $weekNumber = ceil(($daysSinceEventStart + 1) / 7);
 
-            // Ensure the week number is valid (1-13)
-            if ($weekNumber >= 1 && $weekNumber <= 13) {
+            // Ensure the week number is valid (1-8)
+            if ($weekNumber >= 1 && $weekNumber <= 8) {
                 $weekColumn = 'week' . $weekNumber . '_count'; // e.g., week1_count, week2_count, etc.
             }
         }
